@@ -1,48 +1,104 @@
 (function() {
   var rows = ['1', '2', '3', '4', '5', '6', '7', '8'];
   var columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
-  
-  function move(piece, destination) {
-
-  }
-
   $("div.space").on('click', function() {
-    $('div').removeClass("highlight");
+
+    if (!$(this).html()) {
+      return false;
+    }
+
+    $('div').removeClass("highlight").removeClass("couldmove");
     $(this).addClass("highlight");
+    pieceDiv = $(this).children('div');
+    
+    var position, pieceType, team;
 
     var possibleMoves = [];
     if ( $(this).children ) {
-      console.log($(this.id));
+      position = $(this).attr('id');
     }
 
-    var position = '1B';
-    var piece = 'knight';
+    var classOfPiece = $(this).children('div').attr('class').split(' ');
+    team = classOfPiece[0];
+    pieceType = classOfPiece[1];
 
-    if (piece === 'knight') {
-      function move() {
-        var coordinates = position.split('');
-        console.log(coordinates);
+    console.log('team: ' + team + ', piece: ' + pieceType + ', position: ' + position);
 
-        var rowIndex = function(arr) {
+    var coordinates = position.split('');
+    
+    switch (pieceType) {
+      case 'pawn':
+        // if team1, move down a space
+        if (team === 't1') {
           for (var i = 0; i < rows.length; i++) {
-            if (rows[i] === arr[0]) {
-              return i;
+            if (rows[i] === coordinates[1]) {
+              possibleMoves.push(coordinates[0] + rows[i+1]);
+
+        // if in starting position, can move down two spaces
+              if (coordinates[1] === '2' ) {
+                possibleMoves.push(coordinates[0] + rows[i+2]);
+              }            
             }
           }
-          return false;          
-        }
+        } else {
+        // if team2, move up a space 
+          for (var i = 0; i < rows.length; i++) {
+            if (rows[i] === coordinates[1]) {
+              possibleMoves.push(coordinates[0] + rows[i-1]);
 
-        var colIndex = function(arr) {
-          for (var j = 0; j < columns.length; j++) {
-            if (columns[j] === arr[1]) {
-              return j;
+        // if in starting position, can move two spaces
+              if (coordinates[1] === '7') {
+                possibleMoves.push(coordinates[0] + rows[i-2]);
+              }
             }
           }
         }
+        console.log(active);
+        possibleMoves.forEach(function(position) {
+          $('#' + position).addClass('couldmove');
+        });
 
-        console.log(rowIndex(coordinates));
-        console.log(colIndex(coordinates));
+        $('.couldmove').on('click', function() {
+          $(this).html(pieceDiv);
+        });
+        break;
+      case 'knight':
+        console.log('knight clicked');
+        break;
+      case 'castle':
+        console.log('castle clicked');
+        break;
+      case 'bishop':
+        console.log('bishop clicked');
+        break;
+      case 'king':
+        console.log('king clicked');
+        break;
+      case 'queen':
+        console.log('queen clicked');
+        break;
+    }
 
+    if (pieceType === 'knight') {
+      
+
+      var rowIndex = function(arr) {
+        for (var i = 0; i < rows.length; i++) {
+          if (rows[i] === arr[0]) {
+            return i;
+          }
+        }
+        return false;          
+      }
+
+      var colIndex = function(arr) {
+        for (var j = 0; j < columns.length; j++) {
+          if (columns[j] === arr[1]) {
+            return j;
+          }
+        }
+      }
+      console.log(coordinates);
         possibleMoves.push([rows[rowIndex(coordinates) + 2], columns[colIndex(coordinates) + 1]]);
         possibleMoves.push([rows[rowIndex(coordinates) + 2], columns[colIndex(coordinates) - 1]]);
         possibleMoves.push([rows[rowIndex(coordinates) - 2], columns[colIndex(coordinates) + 1]]);
@@ -59,13 +115,12 @@
         });
 
         console.log(pairs);
-      }
+      
 
-      move();
     }
 
   });
-
+  
 
   // Set the possible movements for each kind of piece
 
