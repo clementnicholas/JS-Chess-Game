@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>JS Chess Game</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/jquery-1.11.3.min.js"></script>
+
+        <!-- Latest compiled and minified CSS -->
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <header>
+            <h1>Vanilla JS Chess Game</h1>
+        </header>
+
+        <div class="main-container">
+
+            <div class="team1 graveyard"></div>
+            <div class="game-board">
+                <div class="space" id="A1">
+                    <div class="t1 castle"></div>
+                </div>
+                <div class="space" id="B1">
+                    <div class="t1 knight"></div>
+                </div>
+                <div class="space" id="C1">
+                    <div class="t1 bishop"></div>
+                </div>
+                <div class="space" id="D1">
+                    <div class="t1 king"></div>
+                </div>
+                <div class="space" id="E1">
+                    <div class="t1 queen"></div>
+                </div>
+                <div class="space" id="F1">
+                    <div class="t1 bishop"></div>
+                </div>
+                <div class="space" id="G1">
+                    <div class="t1 knight"></div>
+                </div>
+                <div class="space" id="H1">
+                    <div class="t1 castle"></div>
+                </div>
+                <div class="space" id="A2">
+                    <div class="t1 pawn"></div>
+                </div>
+                <div class="space" id="B2">
+                    <div class="t1 pawn"></div>
+                </div>
+                <div class="space" id="C2">
+                    <div class="t1 pawn"></div>
+                </div>
+                <div class="space" id="D2">
+                    <div class="t1 pawn"></div>
+                </div>
+                <div class="space" id="E2">
+                    <div class="t1 pawn"></div>
+                </div>
+                <div class="space" id="F2">
+                    <div class="t1 pawn"></div>
+                </div>
+                <div class="space" id="G2">
+                    <div class="t1 pawn"></div>
+                </div>
+                <div class="space" id="H2">
+                    <div class="t1 pawn"></div>
+                </div>
+                <div class="space" id="A3"></div>
+                <div class="space" id="B3"></div>
+                <div class="space" id="C3"></div>
+                <div class="space" id="D3"></div>
+                <div class="space" id="E3"></div>
+                <div class="space" id="F3"></div>
+                <div class="space" id="G3"></div>
+                <div class="space" id="H3"></div>
+                <div class="space" id="A4"></div>
+                <div class="space" id="B4"></div>
+                <div class="space" id="C4"></div>
+                <div class="space" id="D4"></div>
+                <div class="space" id="E4"></div>
+                <div class="space" id="F4"></div>
+                <div class="space" id="G4"></div>
+                <div class="space" id="H4"></div>
+                <div class="space" id="A5"></div>
+                <div class="space" id="B5"></div>
+                <div class="space" id="C5"></div>
+                <div class="space" id="D5"></div>
+                <div class="space" id="E5"></div>
+                <div class="space" id="F5"></div>
+                <div class="space" id="G5"></div>
+                <div class="space" id="H5"></div> 
+                <div class="space" id="A6"></div>
+                <div class="space" id="B6"></div>
+                <div class="space" id="C6"></div>
+                <div class="space" id="D6"></div>
+                <div class="space" id="E6"></div>
+                <div class="space" id="F6"></div>
+                <div class="space" id="G6"></div>
+                <div class="space" id="H6"></div> 
+                <div class="space" id="A7">
+                    <div class="t2 pawn"></div>
+                </div>
+                <div class="space" id="B7">
+                    <div class="t2 pawn"></div>
+                </div>
+                <div class="space" id="C7">
+                    <div class="t2 pawn"></div>
+                </div>
+                <div class="space" id="D7">
+                    <div class="t2 pawn"></div>
+                </div>
+                <div class="space" id="E7">
+                    <div class="t2 pawn"></div>
+                </div>
+                <div class="space" id="F7">
+                    <div class="t2 pawn"></div>
+                </div>
+                <div class="space" id="G7">
+                    <div class="t2 pawn"></div>
+                </div>
+                <div class="space" id="H7">
+                    <div class="t2 pawn"></div>
+                </div> 
+                <div class="space" id="A8">
+                    <div class="t2 castle"></div>
+                </div>
+                <div class="space" id="B8">
+                    <div class="t2 knight"></div>
+                </div>
+                <div class="space" id="C8">
+                    <div class="t2 bishop"></div>
+                </div>
+                <div class="space" id="D8">
+                    <div class="t2 king"></div>
+                </div>
+                <div class="space" id="E8">
+                    <div class="t2 queen"></div>
+                </div>
+                <div class="space" id="F8">
+                    <div class="t2 bishop"></div>
+                </div>
+                <div class="space" id="G8">
+                    <div class="t2 knight"></div>
+                </div>
+                <div class="space" id="H8">
+                    <div class="t2 castle"></div>
+                </div>             
+            </div>
+
+            <div class="team2 graveyard"></div>
+
+        </div>
+
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+    </body>
+</html>
